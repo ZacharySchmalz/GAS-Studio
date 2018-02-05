@@ -49,6 +49,7 @@
      <Compile Include="Assets\DefaultCarSetup\Scripts\Rotate.cs" />
      <Compile Include="Assets\DefaultCarSetup\Scripts\UIBehaviour.cs" />
      <Compile Include="Assets\DefaultCarSetup\Scripts\VehicleCameraControl.cs" />
+     <None Include="Assets\SegmentationShader.shader" />
      <None Include="Assets\DefaultCarSetup\README.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
