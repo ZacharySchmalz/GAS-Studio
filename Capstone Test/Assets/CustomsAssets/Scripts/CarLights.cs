@@ -26,6 +26,7 @@ public class CarLights : MonoBehaviour
 	public Material HeadlightOff;
 
 	public float HeadlightIntensity;
+	public float HeadlightRange;
 
 	private bool leftTurn;
 	private bool rightTurn;
@@ -42,7 +43,10 @@ public class CarLights : MonoBehaviour
 		rightTurnToggle = false;
 		leftTurnToggle = false;
 		foreach (Light light in HeadlightsLight)
+		{
 			light.intensity = HeadlightIntensity;
+			light.range = HeadlightRange;
+		}
 	}
 
 	void Update ()

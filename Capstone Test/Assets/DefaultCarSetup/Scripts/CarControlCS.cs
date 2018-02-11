@@ -57,6 +57,8 @@ public class CarControlCS : MonoBehaviour {
 	[Header("Current Control Values")]
 	public float Acceleration;
 	public float Brake;
+	public float AccelerationLog;
+	public float BrakeLog;
 	public float Wheel;
 
 
@@ -93,6 +95,12 @@ public class CarControlCS : MonoBehaviour {
 		Acceleration = Mathf.Clamp (Acceleration, -1, 1);
 		Brake = Input.GetAxis("Brake") - Input.GetAxis ("Accel");
 		Brake = Mathf.Clamp (Brake, -1, 1);
+		AccelerationLog = Acceleration;
+		BrakeLog = Brake;
+		if (AccelerationLog < 0)
+			AccelerationLog = 0;
+		if (BrakeLog < 0)
+			BrakeLog = 0;
 	}
 
 	void AllignWheels()
