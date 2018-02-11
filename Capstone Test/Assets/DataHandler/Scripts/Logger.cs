@@ -8,6 +8,7 @@ public class Logger : MonoBehaviour {
 
     public string scriptToLog;
     public string[] valuesToLog;
+    public Component[] scriptComponents;
 
     private List<FieldInfo> fieldsToLog;
     private Type t;
@@ -16,14 +17,20 @@ public class Logger : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        scriptComponents = GetComponents<Component>();
         fieldsToLog = new List<FieldInfo>();
 
-        t = Type.GetType(scriptToLog);
+        foreach (Component c in scriptComponents)
+        {
+            Debug.Log("components in game: " + c.GetType());
+        }
 
+        t = Type.GetType(scriptToLog);
+        
         if (t != null)
         {
-            targetScript = GetComponent(t); 
-
+            targetScript = GetComponent(t);
+            Debug.Log("Target Script: " + targetScript);
             scriptFields = t.GetFields(BindingFlags.NonPublic | BindingFlags.Instance
                 | BindingFlags.Public);
 
@@ -37,15 +44,13 @@ public class Logger : MonoBehaviour {
                     }
                 }
             }
-
         }
 
         Debug.Log("Type gotten: " + t);
-
-        Debug.Log("About to log:");
+        Debug.Log("--About to log--");
         foreach (FieldInfo f in fieldsToLog)
         {
-            Debug.Log(f.Name);
+            Debug.Log(f.Name + " " + f.GetValue(targetScript));
         }
 
 	}
@@ -55,7 +60,7 @@ public class Logger : MonoBehaviour {
     {
         foreach (FieldInfo f in fieldsToLog)
         {
-            //Debug.Log(f.Name + " " + f.GetValue(targetScript));
+            Debug.Log(f.Name + " " + f.GetValue(targetScript));
             LogManager.instance.Log(string.Format("{0}: {1}", f.Name, f.GetValue(targetScript)));
         }
 	}
