@@ -6,6 +6,7 @@ public class TrafficLight : MonoBehaviour
 {
     public enum Light { GREEN, YELLOW, RED}
 
+    public GameObject parent;
     public GameObject Green;
     public GameObject Yellow;
     public GameObject Red;
@@ -28,7 +29,7 @@ public class TrafficLight : MonoBehaviour
         Yellow.GetComponent<Renderer>().material = YellowOff;
         Red.GetComponent<Renderer>().material = RedOff;
 
-        controller = gameObject.transform.root.gameObject.GetComponent<TrafficController>();
+        controller = parent.GetComponent<TrafficController>();
         currentLight = InitialLight;
 
         // Set current light data
@@ -45,7 +46,6 @@ public class TrafficLight : MonoBehaviour
             case Light.RED :
                 Red.GetComponent<Renderer>().material = RedOn;
                 timer = controller.RedTimer;
-                Debug.Log(timer);
                 break;
         }
 	}
