@@ -910,7 +910,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1848896605390202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 303.1004, y: 0.4660495, z: 164.24146}
+  m_LocalPosition: {x: 436.41174, y: -0.10844155, z: -17.146606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4736857910420856}
@@ -2384,10 +2384,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec568dd3b7f185a46b81afe1213d9efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeadlightInput: 
-  BrakelightInput: 
-  RightTurnSignalInput: 
-  LeftTurnSignalInput: 
+  HeadlightInput: Headlights
+  BrakelightInput: Brake
+  RightTurnSignalInput: TurnRight
+  LeftTurnSignalInput: TurnLeft
   BrakeLights:
   - {fileID: 1365219365969258}
   - {fileID: 1955082007856078}
