@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CarLights : MonoBehaviour
 {
+    public string HeadlightInput;
+    public string BrakelightInput;
+    public string RightTurnSignalInput;
+    public string LeftTurnSignalInput;
+
     public GameObject[] BrakeLights;
     public GameObject[] RightTurnSignals;
     public GameObject[] LeftTurnSignals;
@@ -41,7 +46,7 @@ public class CarLights : MonoBehaviour
         blinker = Mathf.PingPong(Time.time * 2f, 1);
 
         // If braking
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetAxis(BrakelightInput) == 1)
         {
             foreach (GameObject light in BrakeLights)
                 light.GetComponent<Renderer>().material = BrakeOn;
@@ -59,7 +64,7 @@ public class CarLights : MonoBehaviour
         }
 
         // Right turn signal
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetAxis(RightTurnSignalInput) == 1)
         {
             foreach (GameObject signal in LeftTurnSignals)
                 signal.GetComponent<Renderer>().material = TurnSignalOff;
@@ -86,7 +91,7 @@ public class CarLights : MonoBehaviour
         }
 
         // Left turn signal
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetAxis(LeftTurnSignalInput) == 1)
         {
             foreach (GameObject signal in RightTurnSignals)
                 signal.GetComponent<Renderer>().material = TurnSignalOff;
@@ -128,7 +133,7 @@ public class CarLights : MonoBehaviour
             leftTurn = false;
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetAxis(HeadlightInput) == 1)
             headlightToggle = !headlightToggle;
 
         if(headlightToggle)
