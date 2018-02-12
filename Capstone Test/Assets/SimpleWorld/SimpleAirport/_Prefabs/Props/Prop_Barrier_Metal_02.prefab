@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2300000}
   m_Layer: 0
   m_Name: Prop_Barrier_Metal_02
-  m_TagString: Untagged
+  m_TagString: Sign
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

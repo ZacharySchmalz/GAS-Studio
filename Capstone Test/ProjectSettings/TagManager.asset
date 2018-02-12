@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Terrain
+  - Building
+  - Car
+  - Person
+  - Road
+  - Sign
+  - Tree
+  - Props
   layers:
   - Default
   - TransparentFX

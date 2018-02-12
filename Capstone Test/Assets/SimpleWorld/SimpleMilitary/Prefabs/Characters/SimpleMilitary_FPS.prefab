@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 9500000}
   m_Layer: 0
   m_Name: SimpleMilitary_Character_FPS
-  m_TagString: Untagged
+  m_TagString: Person
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -552,7 +552,7 @@ GameObject:
   - component: {fileID: 8100000}
   m_Layer: 0
   m_Name: FPS_Camera
-  m_TagString: MainCamera
+  m_TagString: Person
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 400070}
   m_Layer: 0
   m_Name: SimpleMilitary_FPS
-  m_TagString: Untagged
+  m_TagString: Person
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

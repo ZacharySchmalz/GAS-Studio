@@ -1,10 +1,6 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 Shader "Custom/DepthShader" {
-	Properties
-	{
-		_Depth ("Depth", Float) = 1.0
-	}
 	SubShader {
 	Tags { "RenderType"="Opaque"}
 
@@ -21,7 +17,6 @@ Shader "Custom/DepthShader" {
 		float4 scrPos: TEXCOORD1;
 	};
 
-	float _Depth;
 
 	//Vertex Shader
 	v2f vert (appdata_base v) {
@@ -36,9 +31,9 @@ Shader "Custom/DepthShader" {
 		float depthValue = Linear01Depth (tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.scrPos)).r);
 		half4 depth;
 
-		depth.r = pow(1-depthValue, _Depth);
-		depth.g = pow(1-depthValue, _Depth);
-		depth.b = pow(1-depthValue, _Depth);
+		depth.r = 1-depthValue;
+		depth.g = 1-depthValue;
+		depth.b = 1-depthValue;
 
 		depth.a = 1;
 		return depth;

@@ -79,8 +79,8 @@ GameObject:
   - component: {fileID: 3300008}
   - component: {fileID: 2300008}
   m_Layer: 0
-  m_Name: turret
-  m_TagString: Untagged
+  m_Name: 
+  m_TagString: Props
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2300010}
   m_Layer: 0
   m_Name: missile_launcher
-  m_TagString: Untagged
+  m_TagString: Props
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
