@@ -61,6 +61,11 @@ public class CarControlCS : MonoBehaviour {
 	public float BrakeLog;
 	public float Wheel;
 
+	[Header("GPS")]
+	public GameObject Arrow;
+	public Vector3 Destination;
+	public TextMesh DistanceText;
+	private float Distance;
 
 
 	// Use this for initialization
@@ -85,22 +90,22 @@ public class CarControlCS : MonoBehaviour {
 		currentSpeed = GetComponent<Rigidbody>().velocity.magnitude * 2.23693629f;//convert currentspeed into MPH
 		localCurrentSpeed = transform.InverseTransformDirection (GetComponent<Rigidbody> ().velocity);
 		//if (currentSpeed > maxSpeed || (localCurrentSpeed.z*2.23693629f) < -maxReverseSpeed){
-
+		Vector3 lookDirection = Destination - transform.position;
+		Distance = lookDirection.magnitude;
+		DistanceText.text = (int)Distance + " ft";
+		lookDirection = new Vector3 (lookDirection.x, 0, lookDirection.z);
+		Arrow.transform.rotation = Quaternion.LookRotation(lookDirection);
 	}
 
 	void HandleInputs() {
 		Wheel = Input.GetAxis ("Wheel") * WheelSensitivity;
 		Wheel = Mathf.Clamp (Wheel, -1, 1);
-		Acceleration = (Input.GetAxis ("Accel") - Input.GetAxis ("Brake")) * Input.GetAxis("GearSwitch");
+		Acceleration = (Input.GetAxis ("Accel")*0.5f + 0.5f) * Input.GetAxis("GearSwitch");
 		Acceleration = Mathf.Clamp (Acceleration, -1, 1);
-		Brake = Input.GetAxis("Brake") - Input.GetAxis ("Accel");
-		Brake = Mathf.Clamp (Brake, -1, 1);
+		Brake = Input.GetAxis("Brake")*0.5f + 0.5f;
+		Brake = Mathf.Clamp (Brake, 0, 1);
 		AccelerationLog = Acceleration;
 		BrakeLog = Brake;
-		if (AccelerationLog < 0)
-			AccelerationLog = 0;
-		if (BrakeLog < 0)
-			BrakeLog = 0;
 	}
 
 	void AllignWheels()

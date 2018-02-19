@@ -15,6 +15,9 @@ public class UIBehaviour : MonoBehaviour {
 	public GameObject accel;
 	private Vector3 accelPosition;
 	public string accelAxis;
+
+
+
 	// Use this for initialization
 	void Start () {
 	
