@@ -15,7 +15,7 @@ NavMeshProjectSettings:
     cost: 1
   - name: Sidewalk
     cost: 1
-  - name: 
+  - name: Road
     cost: 1
   - name: 
     cost: 1

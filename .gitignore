@@ -356,3 +356,7 @@ ASALocalRun/
 # Don't ignore any 3d obj models in Unity Assets folder
 !*/Assets/*.obj
 !*/Assets/**/*.meta
+
+# Ignore any Folder in the Assets/ that has Test/ on them
+*/Assets/[Tt]est*/
+*/Assets/**/*[Tt]est*.meta
