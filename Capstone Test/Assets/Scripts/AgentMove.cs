@@ -8,44 +8,49 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class AgentMove : MonoBehaviour {
 
-    public Transform target;
     public List<Transform> targets;
-    public int currentTarget;
+    public int startTarget;
     public GameObject targetList;
     public float distanceThreshold;     // how far does it take until the agent switches to the next target
 
+    private int currentTarget;
     private NavMeshAgent agent;
-    private NavTarget[] navTargets;
     private NavMeshPath samplePath;
 
 
 	// Use this for initialization
 	void Start ()
     {
+        currentTarget = startTarget;
         agent = GetComponent<NavMeshAgent>();
+        targets = new List<Transform>();
 
         // Populate with targets with children
-        if (targetList)
+        
+        if (targetList != null)
         {
+            Debug.Log("Child Count: " + targetList.transform.childCount);
             for (int i = 0; i < targetList.transform.childCount; i++)
             {
                 targets.Add(targetList.transform.GetChild(i));
             }
         }
-                
-// used for dynamically adding object in the nav mesh environment, not yet complete
-//        navTargets = FindObjectsOfType<NavTarget>();
-//        samplePath = new NavMeshPath();
-//        foreach (NavTarget t in navTargets)
-//        {
-//            targets.Add(t.transform);
-//        }
-	}
+
+        // used for dynamically adding object in the nav mesh environment, not yet complete
+        //        navTargets = FindObjectsOfType<NavTarget>();
+        //        samplePath = new NavMeshPath();
+        //        foreach (NavTarget t in navTargets)
+        //        {
+        //            targets.Add(t.transform);
+        //        }
+
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (targetList)
+
+        if (targetList != null)
         {
             if (!agent.pathPending && agent.remainingDistance < distanceThreshold)
             {

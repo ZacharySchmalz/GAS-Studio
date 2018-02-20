@@ -23,7 +23,6 @@ public class GenericLogger : Logger {
         if (t != null)
         {
             targetScript = GetComponent(t);
-            Debug.Log("Target Script: " + targetScript);
             scriptFields = t.GetFields(BindingFlags.NonPublic | BindingFlags.Instance
                 | BindingFlags.Public);
 
@@ -39,12 +38,10 @@ public class GenericLogger : Logger {
             }
         }
 
-        Debug.Log("Type gotten: " + t);
-        Debug.Log("--About to log--");
-        foreach (FieldInfo f in fieldsToLog)
-        {
-            Debug.Log(f.Name + " " + f.GetValue(targetScript));
-        }
+        //foreach (FieldInfo f in fieldsToLog)
+        //{
+        //    Debug.Log(f.Name + " " + f.GetValue(targetScript));
+        //}
 
         type = LoggerType.Generic;
         base.Start();
@@ -59,7 +56,7 @@ public class GenericLogger : Logger {
     {
         foreach (FieldInfo f in fieldsToLog)
         {
-            Debug.Log(f.Name + " " + f.GetValue(targetScript));
+            //Debug.Log(f.Name + " " + f.GetValue(targetScript));
             LogManager.instance.Log(string.Format("{0} {1}: {2}", gameObjectName, f.Name, f.GetValue(targetScript)));
         }
 
