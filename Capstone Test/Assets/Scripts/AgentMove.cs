@@ -29,7 +29,6 @@ public class AgentMove : MonoBehaviour {
         
         if (targetList != null)
         {
-            Debug.Log("Child Count: " + targetList.transform.childCount);
             for (int i = 0; i < targetList.transform.childCount; i++)
             {
                 targets.Add(targetList.transform.GetChild(i));
@@ -68,7 +67,6 @@ public class AgentMove : MonoBehaviour {
             if (NavMesh.CalculatePath(this.transform.position, t.position, NavMesh.AllAreas, samplePath))
             {
                 agent.SetPath(samplePath);
-                Debug.Log("Destination: " + agent.destination);
             }
             Debug.Log(samplePath);
         }
