@@ -67,6 +67,9 @@ public class CarControlCS : MonoBehaviour {
 	public TextMesh DistanceText;
 	private float Distance;
 
+	[Header("Control Method")]
+	public bool isKeyboard;
+
 
 	// Use this for initialization
 	void Start () {
@@ -100,9 +103,16 @@ public class CarControlCS : MonoBehaviour {
 	void HandleInputs() {
 		Wheel = Input.GetAxis ("Wheel") * WheelSensitivity;
 		Wheel = Mathf.Clamp (Wheel, -1, 1);
-		Acceleration = (Input.GetAxis ("Accel")*0.5f + 0.5f) * Input.GetAxis("GearSwitch");
+		if(isKeyboard)
+			Acceleration = (Input.GetAxis ("Accel")) * Input.GetAxis("GearSwitch");
+		else
+			Acceleration = (Input.GetAxis ("Accel")*0.5f + 0.5f) * Input.GetAxis("GearSwitch");
 		Acceleration = Mathf.Clamp (Acceleration, -1, 1);
-		Brake = Input.GetAxis("Brake")*0.5f + 0.5f;
+
+		if(isKeyboard)
+			Brake = Input.GetAxis("Brake");
+		else
+			Brake = Input.GetAxis("Brake")*0.5f + 0.5f;
 		Brake = Mathf.Clamp (Brake, 0, 1);
 		AccelerationLog = Acceleration;
 		BrakeLog = Brake;
