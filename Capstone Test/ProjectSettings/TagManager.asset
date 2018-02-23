@@ -12,6 +12,7 @@ TagManager:
   - Sign
   - Tree
   - Props
+  - RoadDash
   layers:
   - Default
   - TransparentFX

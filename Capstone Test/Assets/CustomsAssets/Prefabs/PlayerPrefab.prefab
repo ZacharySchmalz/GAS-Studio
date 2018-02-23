@@ -1051,7 +1051,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1848896605390202}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 882.6, y: 0.94, z: 258.4}
+  m_LocalPosition: {x: 239.8739, y: -0.20000191, z: 386.09326}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4736857910420856}
@@ -1086,7 +1086,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1955082007856078}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 0.8191223, y: 1.0817266, z: 2.7947998}
+  m_LocalPosition: {x: 0.8191223, y: 1.0817266, z: 2.795}
   m_LocalScale: {x: 0.04200006, y: 1, z: 0.024000015}
   m_Children:
   - {fileID: 4143754055410536}
@@ -1169,7 +1169,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967568964084604}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.1271973, y: 1.081, z: 2.7947998}
+  m_LocalPosition: {x: -1.1271973, y: 1.081, z: 2.795}
   m_LocalScale: {x: 0.019800045, y: 1, z: 0.024000015}
   m_Children: []
   m_Father: {fileID: 4886332828273694}
@@ -1250,7 +1250,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1365219365969258}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.81890106, y: 1.081, z: 2.7947998}
+  m_LocalPosition: {x: -0.81890106, y: 1.081, z: 2.795}
   m_LocalScale: {x: 0.04200009, y: 1, z: 0.024000015}
   m_Children:
   - {fileID: 4552689863981914}
@@ -1318,7 +1318,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1013121552800116}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 1.1275024, y: 1.0818, z: 2.7947998}
+  m_LocalPosition: {x: 1.1275024, y: 1.0818, z: 2.795}
   m_LocalScale: {x: 0.01980003, y: 1, z: 0.024000015}
   m_Children: []
   m_Father: {fileID: 4108624084462352}
@@ -2903,6 +2903,8 @@ MonoBehaviour:
     color: {r: 0, g: 0.91724133, b: 1, a: 0}
   - tag: Props
     color: {r: 0.11678201, g: 0.39705884, b: 0.15350798, a: 0}
+  - tag: RoadDash
+    color: {r: 1, g: 1, b: 0, a: 0}
 --- !u!124 &124259053244843444
 Behaviour:
   m_ObjectHideFlags: 1
