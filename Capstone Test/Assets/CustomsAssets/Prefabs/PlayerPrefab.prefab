@@ -2855,7 +2855,7 @@ MonoBehaviour:
   centerOfGravity: {x: 0, y: -0.5, z: 0}
   maxTorque: 300
   maxReverseSpeed: 25
-  handBrakeTorque: 500
+  handBrakeTorque: 750
   maxSteer: 25
   GearRatio:
   - 0
@@ -2873,6 +2873,7 @@ MonoBehaviour:
   Arrow: {fileID: 1654300400531520}
   Destination: {x: 0, y: 0, z: 0}
   DistanceText: {fileID: 102995284764230930}
+  isKeyboard: 1
 --- !u!114 &114984361151068030
 MonoBehaviour:
   m_ObjectHideFlags: 1
