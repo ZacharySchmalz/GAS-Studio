@@ -38,11 +38,6 @@ public class GenericLogger : Logger {
             }
         }
 
-        //foreach (FieldInfo f in fieldsToLog)
-        //{
-        //    Debug.Log(f.Name + " " + f.GetValue(targetScript));
-        //}
-
         type = LoggerType.Generic;
         base.Start();
     }
@@ -54,11 +49,12 @@ public class GenericLogger : Logger {
 
     public override void LogValues()
     {
+        string temp = "";
         foreach (FieldInfo f in fieldsToLog)
         {
-            //Debug.Log(f.Name + " " + f.GetValue(targetScript));
-            LogManager.instance.Log(string.Format("{0} {1}: {2}", gameObjectName, f.Name, f.GetValue(targetScript)));
+            temp += f.GetValue(targetScript) + ", ";
         }
+        LogManager.instance.LogLine(temp);
 
         base.LogValues();
     }

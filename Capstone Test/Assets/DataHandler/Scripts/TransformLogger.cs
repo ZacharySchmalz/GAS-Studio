@@ -36,17 +36,17 @@ public class TransformLogger : Logger {
         if (x)
         {
             xval = logTransform.position.x;
-            LogManager.instance.Log(string.Format("{0} x: {1}", gameObjectName, xval));
+            LogManager.instance.LogLine(string.Format("{0} x: {1}", gameObjectName, xval));
         }
         if (y)
         {
             yval = logTransform.position.y;
-            LogManager.instance.Log(string.Format("{0} y: {1}", gameObjectName, yval));
+            LogManager.instance.LogLine(string.Format("{0} y: {1}", gameObjectName, yval));
         }
         if (z)
         {
             zval = logTransform.position.z;
-            LogManager.instance.Log(string.Format("{0} z: {1}", gameObjectName, zval));
+            LogManager.instance.LogLine(string.Format("{0} z: {1}", gameObjectName, zval));
         }
 
         base.LogValues();

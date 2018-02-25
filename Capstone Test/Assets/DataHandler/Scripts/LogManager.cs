@@ -20,17 +20,10 @@ public class LogManager : MonoBehaviour {
         }
     }
 
-	// Use this for initialization
-	void Start () 
+    public void LogLine(object msg)
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () 
-    {
-		
-	}
+        fileManager.LogLine(msg);
+    }
 
     public void Log(object msg)
     {

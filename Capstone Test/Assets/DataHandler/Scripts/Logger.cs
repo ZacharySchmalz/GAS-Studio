@@ -17,6 +17,10 @@ public class Logger : MonoBehaviour {
 
     protected string gameObjectName = "";
 
+    public void Awake()
+    {
+        TextureReader.OnSaveTexture += LogValues;
+    }
 	// Use this for initialization
 	public virtual void Start () {
         if (logGameObjectName)
@@ -25,11 +29,11 @@ public class Logger : MonoBehaviour {
 	
 	public virtual void Update () 
     {
-        LogValues();
 	}
 
     public virtual void LogValues()
     {
-
+        Debug.Log("Logging Files");
+        
     }
 }

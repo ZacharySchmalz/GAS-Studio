@@ -7,25 +7,57 @@ using UnityEngine;
 public enum FileType
 {
     Text,
+    CSV,
     None
+};
+public enum Destination
+{
+    Default,
+    Custom
 };
 
 // The File Manager can edit one file at a time
+// Use more instances of file manager to work with more than one different type of file 
 public class FileManager : MonoBehaviour
 {
+    [Header("Destination Info")]
+    public Destination destinationType;
+    [Tooltip("The directory that the files will go into. Default as /Assets/StreamingAssets, doesn't work right now lmao")]
+    public string DirectoryName;
+    [Tooltip("Overwrites the current file name if the same name is found. Otherwise append n at the end of current file name where n = [0, maxFileCount]")]
+    public bool overwrite;
+
+    [Header("File Info")]
     public FileType type;
     public string currentFileName;
-    public bool isLog;
 
+    [Header("Debug")]
+    public int maxFileCount;    // if set to 0, default to 500
+    public bool isLog;
+    public bool writeTime;
+
+    private int dupNum;
     private string defaultFilePath;
     private string currentFilePath;
     private string streamingAssetsPath;
     private string topLevelPath;
 
-    // Inside Assets Folder; 
+    // /Assets/
     public string DefaultFilePath
     {
         get { return defaultFilePath; }
+    }
+        
+    // /Assets/StreamingAssets
+    public string StreamingAssetsPath
+    {
+        get { return streamingAssetsPath; }
+    }
+
+    // Where the Assets Folder is located, not inside
+    public string TopLevelPath
+    {
+        get { return topLevelPath; }
     }
 
     public string CurrentFilePath
@@ -33,34 +65,42 @@ public class FileManager : MonoBehaviour
         get { return currentFilePath; }
     }
 
-    // Inside Assets > StreamingAssets Folder
-    public string StreamingAssetsPath
-    {
-        get { return streamingAssetsPath; }
-    }
-
-    // Where the Assets Folder is located
-    public string TopLevelPath
-    {
-        get { return topLevelPath; }
-    }
-
     void Start()
     {
-
+        if (maxFileCount == 0)
+            maxFileCount = 500;
+        
         defaultFilePath = Application.dataPath;
         topLevelPath = Directory.GetParent(defaultFilePath).FullName;
-        Debug.Log("Default File Path: " + defaultFilePath);
-        currentFilePath = defaultFilePath + "/StreamingAssets";
+        Directory.CreateDirectory(topLevelPath + "/Game_Data");
+
+        if (destinationType == Destination.Default)
+            currentFilePath = defaultFilePath + "/StreamingAssets";
+        else
+            currentFilePath = topLevelPath + "/Game_Data/";
+        
+        Debug.Log("Current File Path: " + currentFilePath);
         streamingAssetsPath = defaultFilePath + "/StreamingAssets";
 
         if (isLog)
         {
-            currentFilePath = Path.Combine(currentFilePath, currentFileName + GetTypeExtensionString(type));
+            string tempFilePath = Path.Combine(currentFilePath, currentFileName + GetTypeExtensionString(type));
+            if (!overwrite)
+            {
+                while (File.Exists(tempFilePath))
+                {
+                    tempFilePath = Path.Combine(currentFilePath, currentFileName + dupNum + GetTypeExtensionString(type));
+                    dupNum++;
+                }
+            }
+            currentFilePath = tempFilePath;
+
             using (StreamWriter sw = File.CreateText(currentFilePath))
             {
-                sw.WriteLine(DateTime.Now.ToString());
+                if (writeTime) sw.WriteLine(DateTime.Now.ToString());
             }
+
+            Debug.Log("Writing to " + currentFilePath);
         }
 
     }
@@ -85,8 +125,8 @@ public class FileManager : MonoBehaviour
         {
             using (StreamWriter sw = File.AppendText(currentFilePath))
             {
-                Debug.Log("Logging to file");
-                sw.WriteLine(string.Format("[{0}] {1}", DateTime.Now.ToString("H:mm:ss"), obj.ToString()));
+                // uses a ternary operator to check if adding time for every log
+                sw.Write(string.Format("{0}{1}", (writeTime) ? (DateTime.Now.ToString("H:mm:ss") + " ") : "", obj.ToString()));
             }
         }
         else
@@ -94,6 +134,24 @@ public class FileManager : MonoBehaviour
             Debug.Log("File does not exist");
         }
     }
+
+    public void LogLine(object obj)
+    {
+        if (File.Exists(currentFilePath))
+        {
+            using (StreamWriter sw = File.AppendText(currentFilePath))
+            {
+                // uses a ternary operator to check if adding time for every log
+                sw.WriteLine(string.Format("{0}{1}", (writeTime) ? (DateTime.Now.ToString("H:mm:ss") + " ") : "", obj.ToString()));
+            }
+        }
+        else
+        {
+            Debug.Log("File does not exist");
+        }
+    }
+
+
 
     public bool CheckForFile(string path, string fileName)
     {
@@ -149,6 +207,8 @@ public class FileManager : MonoBehaviour
         {
             case FileType.Text:
                 return ".txt";
+            case FileType.CSV:
+                return ".csv";
             default:
                 return "";
         }
