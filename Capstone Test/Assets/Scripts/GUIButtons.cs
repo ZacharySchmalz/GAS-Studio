@@ -24,7 +24,7 @@ public class GUIButtons : MonoBehaviour {
 	}
 
 	public void LoadLvlOne () {
-		SceneManager.LoadScene ("doverpointe");
+		SceneManager.LoadScene ("LevelOne");
 	}
 
 	public void LoadLvlTwo () {
