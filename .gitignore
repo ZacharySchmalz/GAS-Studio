@@ -360,3 +360,6 @@ ASALocalRun/
 # Ignore any Folder in the Assets/ that has Test/ on them
 */Assets/[Tt]est*/
 */Assets/**/*[Tt]est*.meta
+
+# Ignore any data saved in a session
+*/[Gg]ame_[Dd]ata/

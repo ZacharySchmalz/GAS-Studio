@@ -60,6 +60,7 @@ public class CarControlCS : MonoBehaviour {
 	public float AccelerationLog;
 	public float BrakeLog;
 	public float Wheel;
+    public float CurrentSpeedLog;
 
 	[Header("GPS")]
 	public GameObject Arrow;
@@ -91,6 +92,7 @@ public class CarControlCS : MonoBehaviour {
 		EngineAudio ();
 
 		currentSpeed = GetComponent<Rigidbody>().velocity.magnitude * 2.23693629f;//convert currentspeed into MPH
+        CurrentSpeedLog = currentSpeed;
 		localCurrentSpeed = transform.InverseTransformDirection (GetComponent<Rigidbody> ().velocity);
 		//if (currentSpeed > maxSpeed || (localCurrentSpeed.z*2.23693629f) < -maxReverseSpeed){
 		Vector3 lookDirection = Destination - transform.position;
