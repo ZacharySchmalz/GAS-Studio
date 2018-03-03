@@ -27,8 +27,10 @@ public class ShaderController : MonoBehaviour {
 
 		for (int i = 0; i < segmentList.Length; i++) {
 			shaderList = GameObject.FindGameObjectsWithTag (segmentList[i].tag);
-			foreach (GameObject gameObject in shaderList) {
-				if (gameObject.GetComponent<Renderer> () != null) {
+			foreach (GameObject gameObject in shaderList)
+            {
+				if (gameObject.GetComponent<Renderer> () != null)
+                {
 					gameObject.GetComponent<Renderer> ().material.shader = standardShader;
 					gameObject.GetComponent<Renderer> ().material.SetColor ("_SegColor", (Vector4)segmentList[i].color);
 				}

@@ -5,9 +5,6 @@
 using UnityEngine;
 using System.Collections;
 
-
-
-
 [System.Serializable]
 public class WC
 {
@@ -70,6 +67,27 @@ public class CarControlCS : MonoBehaviour {
 
 	[Header("Control Method")]
 	public bool isKeyboard;
+    public bool isAI;
+
+    private float accelAxis;
+    private float wheelAxis;
+
+    public float CurrentSteerAngle
+    {
+        get { return Wheel; }
+        set { wheelAxis = value; }
+    }
+
+    public float AccelInput
+    {
+        get { return Acceleration; }
+        set { accelAxis = Mathf.Clamp(value, 0 ,1); }
+    }
+
+    public float CurrentSpeed
+    {
+        get { return currentSpeed; }
+    }
 
 
 	// Use this for initialization
@@ -102,25 +120,37 @@ public class CarControlCS : MonoBehaviour {
 		Arrow.transform.rotation = Quaternion.LookRotation(lookDirection);
 	}
 
-	void HandleInputs() {
-		Wheel = Input.GetAxis ("Wheel") * WheelSensitivity;
-		Wheel = Mathf.Clamp (Wheel, -1, 1);
-		if(isKeyboard)
-			Acceleration = (Input.GetAxis ("Accel")) * Input.GetAxis("GearSwitch");
-		else
-			Acceleration = (Input.GetAxis ("Accel")*0.5f + 0.5f) * Input.GetAxis("GearSwitch");
-		Acceleration = Mathf.Clamp (Acceleration, -1, 1);
+	void HandleInputs()
+    {
+        if (!isAI)
+        {
+            Wheel = Input.GetAxis("Wheel") * WheelSensitivity;
+            Wheel = Mathf.Clamp(Wheel, -1, 1);
+            if (isKeyboard)
+                Acceleration = (Input.GetAxis("Accel")) * Input.GetAxis("GearSwitch");
+            else
+                Acceleration = (Input.GetAxis("Accel") * 0.5f + 0.5f) * Input.GetAxis("GearSwitch");
+            Acceleration = Mathf.Clamp(Acceleration, -1, 1);
 
-		if(isKeyboard)
-			Brake = Input.GetAxis("Brake");
-		else
-			Brake = Input.GetAxis("Brake")*0.5f + 0.5f;
-		Brake = Mathf.Clamp (Brake, 0, 1);
-		AccelerationLog = Acceleration;
-		BrakeLog = Brake;
-	}
+            if (isKeyboard)
+                Brake = Input.GetAxis("Brake");
+            else
+                Brake = Input.GetAxis("Brake") * 0.5f + 0.5f;
+            Brake = Mathf.Clamp(Brake, 0, 1);
+            AccelerationLog = Acceleration;
+            BrakeLog = Brake;
+        }
+        else
+        {
+            Wheel = wheelAxis * WheelSensitivity;
+            Wheel = Mathf.Clamp(Wheel, -1, 1);
+            Acceleration = (accelAxis * 0.5f + 0.5f);
+            Acceleration = Mathf.Clamp(Acceleration, -1, 1);
+            AccelerationLog = Acceleration;
+        }
+    }
 
-	void AllignWheels()
+    void AllignWheels()
 	{
 		//allign the wheel objs to their colliders
 
