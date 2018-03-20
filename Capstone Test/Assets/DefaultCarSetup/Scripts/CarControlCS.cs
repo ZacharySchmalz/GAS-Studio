@@ -3,6 +3,7 @@
 //without permission first
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 [System.Serializable]
@@ -69,19 +70,24 @@ public class CarControlCS : MonoBehaviour {
 	public bool isKeyboard;
     public bool isAI;
 
+    [Header("Data Recording")]
+    public GameObject dataManger;
+    public bool isRecording = false;
+    public Text recordingText;
+
     private float accelAxis;
     private float wheelAxis;
 
     public float CurrentSteerAngle
     {
         get { return Wheel; }
-        set { wheelAxis = value; }
+        set { Wheel = value; }
     }
 
     public float AccelInput
     {
         get { return Acceleration; }
-        set { accelAxis = Mathf.Clamp(value, 0 ,1); }
+        set { Acceleration = Mathf.Clamp(value, 0 ,1); }
     }
 
     public float CurrentSpeed
@@ -122,6 +128,22 @@ public class CarControlCS : MonoBehaviour {
 
 	void HandleInputs()
     {
+        // Recording Input
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            dataManger.SetActive(isRecording = !isRecording);
+            if (dataManger.activeSelf)
+            {
+                recordingText.text = "Recording";
+                recordingText.color = Color.red;
+            }
+            else
+            {
+                recordingText.text = "Not Recording";
+                recordingText.color = Color.black;
+            }
+        }
+
         if (!isAI)
         {
             Wheel = Input.GetAxis("Wheel") * WheelSensitivity;
@@ -142,11 +164,11 @@ public class CarControlCS : MonoBehaviour {
         }
         else
         {
-            Wheel = wheelAxis * WheelSensitivity;
-            Wheel = Mathf.Clamp(Wheel, -1, 1);
-            Acceleration = (accelAxis * 0.5f + 0.5f);
-            Acceleration = Mathf.Clamp(Acceleration, -1, 1);
-            AccelerationLog = Acceleration;
+            //Wheel = wheelAxis * WheelSensitivity;
+            //Wheel = Mathf.Clamp(Wheel, -1, 1);
+            //Acceleration = (accelAxis * 0.5f + 0.5f);
+            //Acceleration = Mathf.Clamp(Acceleration, -1, 1);
+            //AccelerationLog = Acceleration;
         }
     }
 
@@ -221,9 +243,12 @@ public class CarControlCS : MonoBehaviour {
 			reversing = false;
 		}
 
+        //if (isAI)
+       // {
+            wheels.wheelFL.steerAngle = maxSteer * Wheel;
+            wheels.wheelFR.steerAngle = maxSteer * Wheel;
+       // }
 
-		wheels.wheelFL.steerAngle = maxSteer * Wheel;
-		wheels.wheelFR.steerAngle = maxSteer * Wheel;
 		if (Brake > 0)//pressing space triggers the car's handbrake
 		{
 			wheels.wheelFL.brakeTorque = handBrakeTorque * Brake;
