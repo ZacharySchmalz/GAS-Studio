@@ -10,16 +10,20 @@ public class DestinationManager : MonoBehaviour {
     private GameObject player;
     private CarControlCS carControl;
 
+	public delegate void UpdateWaypoint();
+	public static event UpdateWaypoint OnGetWaypoint;
     
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
         player = GameObject.FindGameObjectWithTag("Player");
         carControl = player.GetComponent<CarControlCS>();
         carControl.Destination = waypoints[currentWaypoint].transform.position;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
         CheckWaypoint();
 	}
 
@@ -30,9 +34,18 @@ public class DestinationManager : MonoBehaviour {
             if (Vector3.Distance(player.transform.position, waypoints[currentWaypoint].transform.position) < 5)
             {
                 //Move to next waypoint
+				if (OnGetWaypoint != null) 
+				{
+					OnGetWaypoint ();
+				}
+
                 currentWaypoint++;
-                carControl.Destination = waypoints[currentWaypoint].transform.position;
+				Debug.Log("Current Waypoint " + currentWaypoint);
+				if (currentWaypoint < waypoints.Length)
+                	carControl.Destination = waypoints[currentWaypoint].transform.position;
+
             }
         }
+
     }
 }

@@ -17,7 +17,6 @@ public class SpeedometerUIController : MonoBehaviour {
 	void Update () 
     {
         float currentSpeed = carController.GetComponent<CarControlCS>().CurrentSpeedLog;
-        Debug.Log("Accel: " + carController.GetComponent<CarControlCS>().CurrentSpeedLog);
         if (Input.GetAxis("Accel") > 0)
         {
             ticker.transform.localEulerAngles = new Vector3 (0.0f, 0.0f, 90 - currentSpeed);

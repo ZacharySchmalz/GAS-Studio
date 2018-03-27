@@ -7,22 +7,32 @@ public class Timer : MonoBehaviour {
 
 	public Text timerText;
     public float timeInSeconds;
-	private float timer = 120.0f;
+	public bool hasTimedOut;
 
+	private float timer = 120.0f;
 	// Use this for initialization
 	void Start () 
     {
+		hasTimedOut = false;
         if (timeInSeconds > 0)
             timer = timeInSeconds;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		timer -= Time.deltaTime;
 
-		string minutes = ((int)timer / 60).ToString ();
-		string seconds = (timer % 60).ToString ("f0");
+		if (!hasTimedOut) 
+		{
+			timer -= Time.deltaTime;
+			
+			string minutes = ((int)timer / 60).ToString ();
+			string seconds = (timer % 60).ToString ("f0");
+			
+			timerText.text = minutes + ":" + seconds;
 
-		timerText.text = minutes + ":" + seconds;
+			if (timer <= 0)
+				hasTimedOut = true;
+		}
 	}
+
 }
