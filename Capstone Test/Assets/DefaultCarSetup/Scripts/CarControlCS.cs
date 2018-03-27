@@ -80,14 +80,14 @@ public class CarControlCS : MonoBehaviour {
 
     public float CurrentSteerAngle
     {
-        get { return Wheel; }
-        set { Wheel = value; }
+        get { return wheelAxis; }
+        set { wheelAxis = value; }
     }
 
     public float AccelInput
     {
         get { return Acceleration; }
-        set { Acceleration = Mathf.Clamp(value, 0 ,1); }
+        set { Acceleration = value; }
     }
 
     public float CurrentSpeed
@@ -164,11 +164,11 @@ public class CarControlCS : MonoBehaviour {
         }
         else
         {
-            //Wheel = wheelAxis * WheelSensitivity;
-            //Wheel = Mathf.Clamp(Wheel, -1, 1);
+            Wheel = wheelAxis * WheelSensitivity;
+            Wheel = Mathf.Clamp(Wheel, -1, 1);
             //Acceleration = (accelAxis * 0.5f + 0.5f);
             //Acceleration = Mathf.Clamp(Acceleration, -1, 1);
-            //AccelerationLog = Acceleration;
+            AccelerationLog = Acceleration;
         }
     }
 
