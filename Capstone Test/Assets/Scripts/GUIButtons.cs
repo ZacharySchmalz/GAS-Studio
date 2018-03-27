@@ -43,4 +43,10 @@ public class GUIButtons : MonoBehaviour {
 		SceneManager.LoadScene ("DataOptions");
 	}
 
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+    }
+
+
 }
