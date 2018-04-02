@@ -6,12 +6,18 @@ using UnityEngine.UI;
 public class SpeedometerUIController : MonoBehaviour {
 
     public GameObject ticker;
-    public Text speedText; 
+    public Text speedText;
+    public Image steeringWheel;
+    public Image gearSelector;
+    public float gearSize;
+    private Vector3 gearPosition;
+
     public GameObject carController;
+
 
 	void Start () 
     {
-		
+        gearPosition = gearSelector.transform.localPosition;
 	}
 	
 	void Update () 
@@ -26,7 +32,12 @@ public class SpeedometerUIController : MonoBehaviour {
             ticker.transform.localEulerAngles = new Vector3 (0.0f, 0.0f, 90 - currentSpeed);
         }
 
-        speedText.text = currentSpeed.ToString ("f1") + " kmph"; 
+        speedText.text = currentSpeed.ToString ("f1") + " kmph";
 
-	}
+        float currentSteeringAngle = carController.GetComponent<CarControlCS>().Wheel;
+        steeringWheel.transform.localEulerAngles = new Vector3(0.0f, 0.0f, -170 * currentSteeringAngle);
+
+        float gearVal = Input.GetAxis("GearSwitch");
+        gearSelector.transform.localPosition = gearPosition + Vector3.up * (gearSize * gearVal);
+    }
 }
