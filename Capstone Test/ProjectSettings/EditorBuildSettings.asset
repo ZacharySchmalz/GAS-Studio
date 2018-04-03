@@ -8,15 +8,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: a5dbec7d6a85640389e64b7070203fd4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelSelect.unity
     guid: ab7122721df8c4440991209fbe58b3c1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/doverpointe.unity
     guid: 0b131176e9fc3cc40accb49cc5b9ee1c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Instructions.unity
     guid: 48bf81809ee8e4e758453f0d5d7fc0bc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelOne.unity
     guid: f7ba745ddde8c41b08c096297fcdaa97
+  - enabled: 0
+    path: Assets/Scenes/Network Doverpointe.unity
+    guid: 82aa5fa39ba65174cb0374d55fef714a
+  - enabled: 1
+    path: Assets/Scenes/Network Racing 2 Loop.unity
+    guid: d1403724fc2dc294b9dc73b2ff0278f4

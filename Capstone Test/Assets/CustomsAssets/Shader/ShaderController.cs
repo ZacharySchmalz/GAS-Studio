@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿    using UnityEngine;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +24,7 @@ public class ShaderController : MonoBehaviour {
 
 
 	void Start () {
+        
 		standardShader = Shader.Find("Custom/SegmentShader");
 		segmentShader = Shader.Find ("Unlit/SegShader");
 		originalFarPlane = GetComponent<Camera> ().farClipPlane;

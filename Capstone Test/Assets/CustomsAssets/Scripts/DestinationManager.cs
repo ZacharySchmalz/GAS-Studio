@@ -7,6 +7,7 @@ public class DestinationManager : MonoBehaviour {
     public GameObject[] waypoints;
     public int currentWaypoint = 0;
 
+    [SerializeField]
     private GameObject player;
     private CarControlCS carControl;
 
