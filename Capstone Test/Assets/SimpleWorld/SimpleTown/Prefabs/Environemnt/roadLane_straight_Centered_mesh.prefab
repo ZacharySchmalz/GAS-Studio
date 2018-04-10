@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4971344564381990}
   - component: {fileID: 33023349084419098}
-  - component: {fileID: 64560383179442558}
   - component: {fileID: 23188525205573928}
   m_Layer: 8
   m_Name: DashLeft
@@ -111,7 +110,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4715769859753144}
   - component: {fileID: 33146244008875606}
-  - component: {fileID: 64415168130346794}
   - component: {fileID: 23766113160354634}
   m_Layer: 8
   m_Name: DashRight
@@ -227,32 +225,4 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1624643904169324}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64415168130346794
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1624643904169324}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64560383179442558
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1585177148638728}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
