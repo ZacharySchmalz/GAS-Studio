@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 114056971599901928}
   - component: {fileID: 114232743231217648}
   - component: {fileID: 114920404973734454}
+  - component: {fileID: 114840003271521486}
   m_Layer: 0
   m_Name: Network_AI_Player
   m_TagString: Untagged
@@ -3355,14 +3356,16 @@ MonoBehaviour:
   WheelSensitivity: 1
   Acceleration: 0
   Brake: 0
+  Gear: 0
   AccelerationLog: 0
   BrakeLog: 0
   Wheel: 0
   CurrentSpeedLog: 0
+  isControlActive: 1
   Arrow: {fileID: 1517703362943404}
   Destination: {x: 0, y: 0, z: 0}
   DistanceText: {fileID: 102113152746661304}
-  isKeyboard: 0
+  isKeyboard: 1
   isAI: 0
   dataManger: {fileID: 0}
   isRecording: 0
@@ -3389,6 +3392,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09242320e8dcd04481afbe3a40f8db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114840003271521486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362394806073232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.06666667
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 8
+  m_InterpolateMovement: 8
 --- !u!114 &114920404973734454
 MonoBehaviour:
   m_ObjectHideFlags: 1
