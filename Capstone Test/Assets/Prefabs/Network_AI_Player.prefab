@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 82763622771712462}
   - component: {fileID: 114583759913024174}
   - component: {fileID: 114056971599901928}
-  - component: {fileID: 114232743231217648}
+  - component: {fileID: 114658331451107160}
   - component: {fileID: 114920404973734454}
   - component: {fileID: 114840003271521486}
   - component: {fileID: 114726117116205060}
@@ -3254,25 +3254,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: 1643ea7c9de753b43b02f156c8cf02ff, type: 2}
---- !u!114 &114232743231217648
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1362394806073232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c9697bc77fc8ac40b0b7c67d7fe64f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logGameObjectName: 1
-  type: 0
-  scriptToLog: CarControlCS
-  valuesToLog:
-  - Wheel
-  - AccelerationLog
-  - BrakeLog
-  - CurrentSpeedLog
 --- !u!114 &114343875851906274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3406,6 +3387,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09242320e8dcd04481afbe3a40f8db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114658331451107160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362394806073232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856a653b9328d744d964a0df70b530de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logGameObjectName: 0
+  type: 0
+  identity: {fileID: 114920404973734454}
+  scriptToLog: CarControlCS
+  valuesToLog:
+  - Wheel
+  - AccelerationLog
+  - BrakeLog
+  - CurrentSpeedLog
 --- !u!114 &114726117116205060
 MonoBehaviour:
   m_ObjectHideFlags: 1
