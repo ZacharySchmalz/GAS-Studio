@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -869,6 +869,12 @@ Prefab:
       propertyPath: m_OnlineScene
       value: Network Racing 2 Loop
       objectReference: {fileID: 0}
+    - target: {fileID: 114934732088270986, guid: 5b8ffe1deb36c434a8771e496a66f5f8,
+        type: 2}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 1362394806073232, guid: 7cddda6cd929f2c4a80a73a1da571387,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b8ffe1deb36c434a8771e496a66f5f8, type: 2}
   m_IsPrefabParent: 0

@@ -101,6 +101,7 @@ public class FileManager : MonoBehaviour
             }
 
             Debug.Log("Writing to " + currentFilePath);
+            LogLine("left" + "," + "center" + "," + "right" + "," + "throttle" + "," + "reverse" + "," + "steering" + "," + "speed");
         }
 
     }

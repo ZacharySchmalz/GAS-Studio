@@ -3,10 +3,8 @@
 //without permission first
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
-
-
-
 
 [System.Serializable]
 public class WC
@@ -70,6 +68,32 @@ public class CarControlCS : MonoBehaviour {
 
 	[Header("Control Method")]
 	public bool isKeyboard;
+    public bool isAI;
+
+    [Header("Data Recording")]
+    public GameObject dataManger;
+    public bool isRecording = false;
+    public Text recordingText;
+
+    private float accelAxis;
+    private float wheelAxis;
+
+    public float CurrentSteerAngle
+    {
+        get { return Wheel; }
+        set { Wheel = value; }
+    }
+
+    public float AccelInput
+    {
+        get { return Acceleration; }
+        set { Acceleration = Mathf.Clamp(value, 0 ,1); }
+    }
+
+    public float CurrentSpeed
+    {
+        get { return currentSpeed; }
+    }
 
 
 	// Use this for initialization
@@ -102,25 +126,53 @@ public class CarControlCS : MonoBehaviour {
 		Arrow.transform.rotation = Quaternion.LookRotation(lookDirection);
 	}
 
-	void HandleInputs() {
-		Wheel = Input.GetAxis ("Wheel") * WheelSensitivity;
-		Wheel = Mathf.Clamp (Wheel, -1, 1);
-		if(isKeyboard)
-			Acceleration = (Input.GetAxis ("Accel")) * Input.GetAxis("GearSwitch");
-		else
-			Acceleration = (Input.GetAxis ("Accel")*0.5f + 0.5f) * Input.GetAxis("GearSwitch");
-		Acceleration = Mathf.Clamp (Acceleration, -1, 1);
+	void HandleInputs()
+    {
+        // Recording Input
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            dataManger.SetActive(isRecording = !isRecording);
+            if (dataManger.activeSelf)
+            {
+                recordingText.text = "Recording";
+                recordingText.color = Color.red;
+            }
+            else
+            {
+                recordingText.text = "Not Recording";
+                recordingText.color = Color.black;
+            }
+        }
 
-		if(isKeyboard)
-			Brake = Input.GetAxis("Brake");
-		else
-			Brake = Input.GetAxis("Brake")*0.5f + 0.5f;
-		Brake = Mathf.Clamp (Brake, 0, 1);
-		AccelerationLog = Acceleration;
-		BrakeLog = Brake;
-	}
+        if (!isAI)
+        {
+            Wheel = Input.GetAxis("Wheel") * WheelSensitivity;
+            Wheel = Mathf.Clamp(Wheel, -1, 1);
+            if (isKeyboard)
+                Acceleration = (Input.GetAxis("Accel")) * Input.GetAxis("GearSwitch");
+            else
+                Acceleration = (Input.GetAxis("Accel") * 0.5f + 0.5f) * Input.GetAxis("GearSwitch");
+            Acceleration = Mathf.Clamp(Acceleration, -1, 1);
 
-	void AllignWheels()
+            if (isKeyboard)
+                Brake = Input.GetAxis("Brake");
+            else
+                Brake = Input.GetAxis("Brake") * 0.5f + 0.5f;
+            Brake = Mathf.Clamp(Brake, 0, 1);
+            AccelerationLog = Acceleration;
+            BrakeLog = Brake;
+        }
+        else
+        {
+            //Wheel = wheelAxis * WheelSensitivity;
+            //Wheel = Mathf.Clamp(Wheel, -1, 1);
+            //Acceleration = (accelAxis * 0.5f + 0.5f);
+            //Acceleration = Mathf.Clamp(Acceleration, -1, 1);
+            //AccelerationLog = Acceleration;
+        }
+    }
+
+    void AllignWheels()
 	{
 		//allign the wheel objs to their colliders
 
@@ -191,9 +243,12 @@ public class CarControlCS : MonoBehaviour {
 			reversing = false;
 		}
 
+        //if (isAI)
+       // {
+            wheels.wheelFL.steerAngle = maxSteer * Wheel;
+            wheels.wheelFR.steerAngle = maxSteer * Wheel;
+       // }
 
-		wheels.wheelFL.steerAngle = maxSteer * Wheel;
-		wheels.wheelFR.steerAngle = maxSteer * Wheel;
 		if (Brake > 0)//pressing space triggers the car's handbrake
 		{
 			wheels.wheelFL.brakeTorque = handBrakeTorque * Brake;
@@ -245,7 +300,7 @@ public class CarControlCS : MonoBehaviour {
 	void OnGUI()
 	{
 		//show the GUI for the speed and gear we are on.
-		//GUI.Box(new Rect(10,10,70,30),"MPH: " + Mathf.Round(GetComponent<Rigidbody>().velocity.magnitude * 2.23693629f));
+		GUI.Box(new Rect(10,10,70,30),"MPH: " + Mathf.Round(GetComponent<Rigidbody>().velocity.magnitude * 2.23693629f));
 		/*if (!reversing)
 			GUI.Box(new Rect(10,70,70,30),"Gear: " + (gear+1));
 		if (reversing)//if the car is going backwards display the gear as R

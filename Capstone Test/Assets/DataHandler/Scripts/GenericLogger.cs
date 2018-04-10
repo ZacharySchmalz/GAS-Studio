@@ -39,6 +39,7 @@ public class GenericLogger : Logger {
         }
 
         type = LoggerType.Generic;
+
         base.Start();
     }
 	

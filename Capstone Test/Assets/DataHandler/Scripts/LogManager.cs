@@ -7,6 +7,7 @@ public class LogManager : MonoBehaviour {
 
     public static LogManager instance;
     public FileManager fileManager;
+    public TextureReader textureReader;
 
     void Awake()
     {
