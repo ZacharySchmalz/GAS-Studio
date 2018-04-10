@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour {
 
 	public Text timerText;
+    public bool isCounting = true;
     public float timeInSeconds;
 	public bool hasTimedOut;
 
@@ -23,6 +24,7 @@ public class Timer : MonoBehaviour {
 
 		if (!hasTimedOut) 
 		{
+            if(isCounting)
 			timer -= Time.deltaTime;
 			
 			string minutes = ((int)timer / 60).ToString ();

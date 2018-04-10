@@ -13,16 +13,19 @@ public class SpeedometerUIController : MonoBehaviour {
     private Vector3 gearPosition;
 
     public GameObject carController;
+    private CarControlCS controlScript;
 
 
 	void Start () 
     {
         gearPosition = gearSelector.transform.localPosition;
-	}
+        controlScript = carController.GetComponent<CarControlCS>();
+
+    }
 	
 	void Update () 
     {
-        float currentSpeed = carController.GetComponent<CarControlCS>().CurrentSpeedLog;
+        float currentSpeed = controlScript.CurrentSpeedLog;
         if (Input.GetAxis("Accel") > 0)
         {
             ticker.transform.localEulerAngles = new Vector3 (0.0f, 0.0f, 90 - currentSpeed);
@@ -37,7 +40,7 @@ public class SpeedometerUIController : MonoBehaviour {
         float currentSteeringAngle = carController.GetComponent<CarControlCS>().Wheel;
         steeringWheel.transform.localEulerAngles = new Vector3(0.0f, 0.0f, -170 * currentSteeringAngle);
 
-        float gearVal = Input.GetAxis("GearSwitch");
+        float gearVal = controlScript.Gear;
         gearSelector.transform.localPosition = gearPosition + Vector3.up * (gearSize * gearVal);
     }
 }

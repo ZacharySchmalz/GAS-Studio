@@ -55,10 +55,12 @@ public class CarControlCS : MonoBehaviour {
 	[Header("Current Control Values")]
 	public float Acceleration;
 	public float Brake;
+    public float Gear;
 	public float AccelerationLog;
 	public float BrakeLog;
 	public float Wheel;
     public float CurrentSpeedLog;
+    public bool isControlActive;
 
 	[Header("GPS")]
 	public GameObject Arrow;
@@ -101,6 +103,7 @@ public class CarControlCS : MonoBehaviour {
 
 		//Alter the center of mass for stability on your car
 		GetComponent<Rigidbody>().centerOfMass = centerOfGravity;
+        Gear = 1;
 	}
 
 	// Update is called once per frame
@@ -144,31 +147,58 @@ public class CarControlCS : MonoBehaviour {
             }
         }
 
-        if (!isAI)
+        if (!isAI && isControlActive)
         {
+            //Update wheel angle
             Wheel = Input.GetAxis("Wheel") * WheelSensitivity;
             Wheel = Mathf.Clamp(Wheel, -1, 1);
-            if (isKeyboard)
-                Acceleration = (Input.GetAxis("Accel")) * Input.GetAxis("GearSwitch");
-            else
-                Acceleration = (Input.GetAxis("Accel") * 0.5f + 0.5f) * Input.GetAxis("GearSwitch");
-            Acceleration = Mathf.Clamp(Acceleration, -1, 1);
 
+            //Update Brake
             if (isKeyboard)
+            {
                 Brake = Input.GetAxis("Brake");
+            }
             else
+            {
                 Brake = Input.GetAxis("Brake") * 0.5f + 0.5f;
+            }
+
+            //Update Acceleration
+            if (isKeyboard)
+            {
+                if(localCurrentSpeed.z > -0.01f)
+                {
+                    Gear = 1;
+                } else
+                {
+                    Gear = -1;
+                }
+                Acceleration = (Input.GetAxis("Accel"));
+                //If reversing while moving forward activate brake instead
+                if (Input.GetAxis("Accel") < 0 && localCurrentSpeed.z > 0.1f)
+                {
+                    Acceleration = 0;
+                    Brake = 1;
+                }
+                //If forward while moving backwards activate brake instead
+                if (Input.GetAxis("Accel") > 0 && localCurrentSpeed.z < -0.1f)
+                {
+                    Acceleration = 0;
+                    Brake = 1;
+                }
+            }
+            else
+            {
+                if(Input.GetAxis("GearSwitch") == 1) { Gear = 1; }
+                if (Input.GetAxis("GearSwitch") == -1) { Gear = -1; }
+
+                Acceleration = (Input.GetAxis("Accel") * 0.5f + 0.5f) * Input.GetAxis("GearSwitch");
+            }
+
+            Acceleration = Mathf.Clamp(Acceleration, -1, 1);
             Brake = Mathf.Clamp(Brake, 0, 1);
             AccelerationLog = Acceleration;
             BrakeLog = Brake;
-        }
-        else
-        {
-            //Wheel = wheelAxis * WheelSensitivity;
-            //Wheel = Mathf.Clamp(Wheel, -1, 1);
-            //Acceleration = (accelAxis * 0.5f + 0.5f);
-            //Acceleration = Mathf.Clamp(Acceleration, -1, 1);
-            //AccelerationLog = Acceleration;
         }
     }
 
@@ -300,7 +330,7 @@ public class CarControlCS : MonoBehaviour {
 	void OnGUI()
 	{
 		//show the GUI for the speed and gear we are on.
-		GUI.Box(new Rect(10,10,70,30),"MPH: " + Mathf.Round(GetComponent<Rigidbody>().velocity.magnitude * 2.23693629f));
+		//GUI.Box(new Rect(10,10,70,30),"MPH: " + Mathf.Round(GetComponent<Rigidbody>().velocity.magnitude * 2.23693629f));
 		/*if (!reversing)
 			GUI.Box(new Rect(10,70,70,30),"Gear: " + (gear+1));
 		if (reversing)//if the car is going backwards display the gear as R

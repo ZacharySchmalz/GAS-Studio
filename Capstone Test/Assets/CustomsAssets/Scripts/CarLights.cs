@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class CarLights : MonoBehaviour
 {
-	public string HeadlightInput;
+
+
+
+    public string HeadlightInput;
 	public string BrakelightInput;
 	public string RightTurnSignalInput;
 	public string LeftTurnSignalInput;
@@ -36,7 +39,9 @@ public class CarLights : MonoBehaviour
 	private bool rightTurnToggle;
 	private bool leftTurnToggle;
 
-	void Start ()
+    private CarControlCS controlScript;
+
+    void Start ()
 	{
 		blinker = 0;
 		headlightToggle = false;
@@ -47,7 +52,10 @@ public class CarLights : MonoBehaviour
 			light.intensity = HeadlightIntensity;
 			light.range = HeadlightRange;
 		}
-	}
+
+        //Setup Input Values
+        controlScript = this.gameObject.GetComponent<CarControlCS>();
+    }
 
 	void Update ()
 	{
@@ -55,7 +63,7 @@ public class CarLights : MonoBehaviour
 		blinker = Mathf.PingPong(Time.time * 2f, 1);
 
 		// If braking
-		if (Input.GetAxis(BrakelightInput) > 0)
+		if (controlScript.Brake > 0)
 		{
 			foreach (GameObject light in BrakeLights)
 				light.GetComponent<Renderer>().material = BrakeOn;
