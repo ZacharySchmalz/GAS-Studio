@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 114232743231217648}
   - component: {fileID: 114920404973734454}
   - component: {fileID: 114840003271521486}
+  - component: {fileID: 114726117116205060}
   m_Layer: 0
   m_Name: Network_AI_Player
   m_TagString: Untagged
@@ -673,6 +674,7 @@ GameObject:
   - component: {fileID: 124255488997183318}
   - component: {fileID: 114192465834685382}
   - component: {fileID: 114422101149691602}
+  - component: {fileID: 114121265056897628}
   m_Layer: 0
   m_Name: Shader Render Camera
   m_TagString: Untagged
@@ -3212,6 +3214,18 @@ MonoBehaviour:
   HeadlightOff: {fileID: 2100000, guid: 4b977b34c1d78f04f8de4635c21c0b4c, type: 2}
   HeadlightIntensity: 5
   HeadlightRange: 100
+--- !u!114 &114121265056897628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687194912501150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83af199d9d7e22449f66b80bdc9b001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identity: {fileID: 114920404973734454}
 --- !u!114 &114176896386802632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3392,6 +3406,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09242320e8dcd04481afbe3a40f8db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114726117116205060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362394806073232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f693435377d8646a7dc93c5cce0536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
 --- !u!114 &114840003271521486
 MonoBehaviour:
   m_ObjectHideFlags: 1
