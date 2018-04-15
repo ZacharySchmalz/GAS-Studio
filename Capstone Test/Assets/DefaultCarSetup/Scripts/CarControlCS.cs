@@ -116,7 +116,7 @@ public class CarControlCS : MonoBehaviour {
 		HandleInputs ();
 
 		Drive ();
-		//EngineAudio ();
+		EngineAudio ();
 
 		currentSpeed = GetComponent<Rigidbody>().velocity.magnitude * 2.23693629f;//convert currentspeed into MPH
         CurrentSpeedLog = currentSpeed;

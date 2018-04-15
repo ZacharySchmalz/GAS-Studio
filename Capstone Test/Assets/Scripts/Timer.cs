@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour {
 
 	public Text timerText;
+    public bool isCountingUp;
     public bool isCounting = true;
     public float timeInSeconds;
 	public bool hasTimedOut;
@@ -15,8 +16,15 @@ public class Timer : MonoBehaviour {
 	void Start () 
     {
 		hasTimedOut = false;
-        if (timeInSeconds > 0)
-            timer = timeInSeconds;
+        if (isCountingUp)
+        {
+            timer = 0;
+        }
+        else
+        {
+            if (timeInSeconds > 0)
+                timer = timeInSeconds;
+        }
 	}
 	
 	// Update is called once per frame
@@ -25,7 +33,16 @@ public class Timer : MonoBehaviour {
 		if (!hasTimedOut) 
 		{
             if(isCounting)
-			timer -= Time.deltaTime;
+            {
+                if(isCountingUp)
+                {
+                    timer += Time.deltaTime;
+                } else
+                {
+                    timer -= Time.deltaTime;
+                }
+            }
+			
 			
 			string minutes = ((int)timer / 60).ToString ();
 			string seconds = (timer % 60).ToString ("f0");
