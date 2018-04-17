@@ -8,7 +8,6 @@ public class TutorialGameManager : MonoBehaviour
 {
 
     public DestinationManager destinationManager;
-    public GameManagerUI gameManagerUI;
     public Timer timer;
     public Text CountInText;
     public GameObject pauseScreen;
@@ -21,6 +20,8 @@ public class TutorialGameManager : MonoBehaviour
     public GameObject GUICamera;
 
     public bool isPaused = false;
+
+
 
 
     public delegate void GameStatus();
@@ -60,8 +61,7 @@ public class TutorialGameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        destinationManager = GetComponent<DestinationManager>();
-        gameManagerUI = GetComponent<GameManagerUI>();
+        destinationManager = GameObject.FindGameObjectWithTag("Player").GetComponent<DestinationManager>();
         timer.isCounting = false;
         controlScript = GameObject.FindGameObjectWithTag("Player").GetComponent<CarControlCS>();
         controlScript.isControlActive = false;
@@ -238,7 +238,7 @@ public class TutorialGameManager : MonoBehaviour
         initializeState = true;
     }
 
-    public void SetInputMethod(int method)
+    /*public void SetInputMethod(int method)
     {
         switch (method) //0 = Wheel, 1 = Keyboard, 2 = AI
         {
@@ -258,6 +258,12 @@ public class TutorialGameManager : MonoBehaviour
                 break;
         }
         inputScreen.SetActive(false);
+    }*/
+
+    public void InputSelected()
+    {
+        inputScreen.SetActive(false);
+        StartGame();
     }
 
     public void SetupTutorialScreen(int index)

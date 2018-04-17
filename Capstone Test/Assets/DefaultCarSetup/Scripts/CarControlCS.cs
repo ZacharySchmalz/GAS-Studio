@@ -336,4 +336,26 @@ public class CarControlCS : MonoBehaviour {
 		if (reversing)//if the car is going backwards display the gear as R
 			GUI.Box(new Rect(10,70,70,30),"Gear: R");*/
 	}
+
+    public void SetInputMethod(int method)
+    {
+        switch (method) //0 = Wheel, 1 = Keyboard, 2 = AI
+        {
+            case 0: //Wheel
+                isKeyboard = false;
+                isAI = false;
+                break;
+            case 1: //Keyboard
+                isKeyboard = true;
+                isAI = false;
+                break;
+            case 2://AI
+                isKeyboard = false;
+                isAI = true;
+                break;
+            default:
+                break;
+        }
+        GameObject.FindGameObjectWithTag("GameController").SendMessage("InputSelected");
+    }
 }
