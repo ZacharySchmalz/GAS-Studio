@@ -6,20 +6,30 @@ public class DestinationManager : MonoBehaviour {
 
     public GameObject[] waypoints;
     public int currentWaypoint = 0;
-
-    [SerializeField]
-    private GameObject player;
     private CarControlCS carControl;
 
 	public delegate void UpdateWaypoint();
 	public static event UpdateWaypoint OnGetWaypoint;
+
+    public void UpdateWaypoints()
+    {
+        waypoints = GameObject.FindGameObjectWithTag("GameController").GetComponent<Waypoints>().waypoints;
+        if (waypoints.Length > currentWaypoint)
+        {
+            carControl = GetComponent<CarControlCS>();
+            carControl.Destination = waypoints[currentWaypoint].transform.position;
+        }
+    }
     
 	// Use this for initialization
 	void Start () 
 	{
-        player = GameObject.FindGameObjectWithTag("Player");
-        carControl = player.GetComponent<CarControlCS>();
-        carControl.Destination = waypoints[currentWaypoint].transform.position;
+        waypoints = GameObject.FindGameObjectWithTag("GameController").GetComponent<Waypoints>().waypoints;
+        /*if (waypoints.Length > currentWaypoint)
+        {
+            carControl = GetComponent<CarControlCS>();
+            carControl.Destination = waypoints[currentWaypoint].transform.position;
+        }*/
 	}
 	
 	// Update is called once per frame
@@ -32,7 +42,7 @@ public class DestinationManager : MonoBehaviour {
     {
         if (currentWaypoint < waypoints.Length)
         {
-            if (Vector3.Distance(player.transform.position, waypoints[currentWaypoint].transform.position) < 5)
+            if (Vector3.Distance(this.transform.position, waypoints[currentWaypoint].transform.position) < 5)
             {
                 //Move to next waypoint
 				if (OnGetWaypoint != null) 

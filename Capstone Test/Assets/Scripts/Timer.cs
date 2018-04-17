@@ -49,7 +49,7 @@ public class Timer : MonoBehaviour {
 			
 			timerText.text = minutes + ":" + seconds;
 
-			if (timer <= 0)
+			if (timer < 0)
 				hasTimedOut = true;
 		}
 	}
