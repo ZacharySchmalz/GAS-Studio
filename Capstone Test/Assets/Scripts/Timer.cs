@@ -46,8 +46,14 @@ public class Timer : MonoBehaviour {
 			
 			string minutes = ((int)timer / 60).ToString ();
 			string seconds = (timer % 60).ToString ("f0");
+			if(seconds.Length < 2)
+            {
+                timerText.text = minutes + ":0" + seconds;
+            } else
+            {
+                timerText.text = minutes + ":" + seconds;
+            }
 			
-			timerText.text = minutes + ":" + seconds;
 
 			if (timer < 0)
 				hasTimedOut = true;

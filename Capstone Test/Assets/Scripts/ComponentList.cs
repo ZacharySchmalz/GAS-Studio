@@ -9,10 +9,13 @@ public class ComponentList : MonoBehaviour {
     public Text CountInText;
     public GameObject pauseScreen;
     public GameObject inputScreen;
+    public GameObject lobbyScreen;
+    public Text playerList;
     public Text gameStatusText;
     public Text waypointsText;
     public GameObject GUICanvas;
     public GameObject GUICamera;
+    public CarControlCS carControl;
     // Use this for initialization
     void Start () {
 		

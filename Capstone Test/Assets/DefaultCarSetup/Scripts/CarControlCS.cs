@@ -80,6 +80,8 @@ public class CarControlCS : MonoBehaviour {
     private float accelAxis;
     private float wheelAxis;
 
+    private GameObject GameManager;
+
     public float CurrentSteerAngle
     {
         get { return Wheel; }
@@ -103,6 +105,8 @@ public class CarControlCS : MonoBehaviour {
 
 		//Alter the center of mass for stability on your car
 		GetComponent<Rigidbody>().centerOfMass = centerOfGravity;
+        GameManager = GameObject.FindGameObjectWithTag("GameController");
+        GameManager.SendMessage("UpdatePlayers");
         Gear = 1;
 	}
 
@@ -356,6 +360,17 @@ public class CarControlCS : MonoBehaviour {
             default:
                 break;
         }
-        GameObject.FindGameObjectWithTag("GameController").SendMessage("InputSelected");
+        GameManager.SendMessage("InputSelected");
     }
+
+    public void StartRace()
+    {
+        GameManager.SendMessage("StartRace");
+    }
+
+    public void Resume()
+    {
+        GameManager.SendMessage("ResumeGame");
+    }
+
 }

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Waypoints : MonoBehaviour {
+    public int totalLaps = 3;
     public GameObject[] waypoints;
-    private GameObject[] players;
+    private GameObject player;
+    private GameObject AIPlayer;
     // Use this for initialization
     //Waypoints automatically detects all waypoints named "Waypoint [#]"
     void Start () {
@@ -14,12 +16,12 @@ public class Waypoints : MonoBehaviour {
             string waypointName = "Waypoint " + (i + 1);
             waypoints[i] = GameObject.Find(waypointName);
         }
-        players = GameObject.FindGameObjectsWithTag("Player");
-        foreach(GameObject player in players)
-        {
-            player.GetComponent<DestinationManager>().SendMessage("UpdateWaypoints");
-        }
-	}
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<DestinationManager>().SendMessage("UpdateWaypoints");
+        AIPlayer = GameObject.FindGameObjectWithTag("AIPlayer");
+        AIPlayer.GetComponent<DestinationManager>().SendMessage("UpdateWaypoints");
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

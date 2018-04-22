@@ -38,3 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Network Racing 2 Loop.unity
     guid: d1403724fc2dc294b9dc73b2ff0278f4
+  - enabled: 1
+    path: Assets/Scenes/NetworkTesting/GameManagerTest.unity
+    guid: 861648b5a227fab41bcac2729d46f57a
+  - enabled: 1
+    path: Assets/Scenes/NetworkTesting/MultiplayerTest.unity
+    guid: c989f142878b22440b9ad799d376b86d

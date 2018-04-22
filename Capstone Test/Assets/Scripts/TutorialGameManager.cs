@@ -304,4 +304,9 @@ public class TutorialGameManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void UpdatePlayers()
+    {
+
+    }
 }

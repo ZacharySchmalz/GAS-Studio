@@ -218,7 +218,7 @@ public class RacingGameManager : MonoBehaviour
         {
             for (int i = 0; i < players.Length; i++)
             {
-                waypointTexts[i].text = "Waypoints: " + destinationManager.currentWaypoint + "/" + destinationManager.waypoints.Length;
+                waypointTexts[i].text = "Waypoints: " + destinationManagers[i].currentWaypoint + "/" + destinationManagers[i].waypoints.Length;
             }
         }
 

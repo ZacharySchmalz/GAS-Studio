@@ -5,7 +5,9 @@ using UnityEngine;
 public class DestinationManager : MonoBehaviour {
 
     public GameObject[] waypoints;
+    public int totalLaps;
     public int currentWaypoint = 0;
+    public int currentLap = 0;
     private CarControlCS carControl;
 
 	public delegate void UpdateWaypoint();
@@ -24,13 +26,16 @@ public class DestinationManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-        waypoints = GameObject.FindGameObjectWithTag("GameController").GetComponent<Waypoints>().waypoints;
+        Waypoints waypointManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<Waypoints>();
+        waypoints = waypointManager.waypoints;
+        totalLaps = waypointManager.totalLaps;
+        
         /*if (waypoints.Length > currentWaypoint)
         {
             carControl = GetComponent<CarControlCS>();
             carControl.Destination = waypoints[currentWaypoint].transform.position;
         }*/
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -40,7 +45,7 @@ public class DestinationManager : MonoBehaviour {
 
     private void CheckWaypoint()
     {
-        if (currentWaypoint < waypoints.Length)
+        if (currentWaypoint < waypoints.Length && waypoints.Length > 0)
         {
             if (Vector3.Distance(this.transform.position, waypoints[currentWaypoint].transform.position) < 5)
             {
@@ -52,8 +57,16 @@ public class DestinationManager : MonoBehaviour {
 
                 currentWaypoint++;
 				Debug.Log("Current Waypoint " + currentWaypoint);
-				if (currentWaypoint < waypoints.Length)
-                	carControl.Destination = waypoints[currentWaypoint].transform.position;
+                if (currentWaypoint < waypoints.Length)
+                {
+                    carControl.Destination = waypoints[currentWaypoint].transform.position;
+                }
+                else if (currentLap < totalLaps)
+                {
+                    currentWaypoint = 0;
+                    carControl.Destination = waypoints[currentWaypoint].transform.position;
+                    currentLap++;
+                }
 
             }
         }

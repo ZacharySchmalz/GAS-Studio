@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 114232743231217648}
   m_Layer: 0
   m_Name: AI_Player
-  m_TagString: Untagged
+  m_TagString: AIPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3225,6 +3225,7 @@ MonoBehaviour:
   - {fileID: 20237485869907374}
   - {fileID: 20912507648478466}
   - {fileID: 20415046933557250}
+  identity: {fileID: 0}
 --- !u!114 &114192465834685382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3327,19 +3328,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheels:
-    wheelFL: {fileID: 146891687497107552}
-    wheelFR: {fileID: 146997090771105984}
-    wheelRL: {fileID: 146827860767367070}
-    wheelRR: {fileID: 146216762564524322}
+    wheelFL: {fileID: 146368994536643312, guid: 058cbb86027253742a174a501264a00b,
+      type: 2}
+    wheelFR: {fileID: 146123631473432832, guid: 058cbb86027253742a174a501264a00b,
+      type: 2}
+    wheelRL: {fileID: 146144452200800172, guid: 058cbb86027253742a174a501264a00b,
+      type: 2}
+    wheelRR: {fileID: 146393603905370346, guid: 058cbb86027253742a174a501264a00b,
+      type: 2}
   tires:
-    wheelFL: {fileID: 4868008301694380}
-    wheelFR: {fileID: 4906284048020620}
-    wheelRL: {fileID: 4303008023025936}
-    wheelRR: {fileID: 4045040887833740}
+    wheelFL: {fileID: 4736857910420856, guid: 058cbb86027253742a174a501264a00b, type: 2}
+    wheelFR: {fileID: 4456425513455236, guid: 058cbb86027253742a174a501264a00b, type: 2}
+    wheelRL: {fileID: 4785153739045018, guid: 058cbb86027253742a174a501264a00b, type: 2}
+    wheelRR: {fileID: 4188481974715656, guid: 058cbb86027253742a174a501264a00b, type: 2}
   extraWheels: []
   extraWheelObjects: []
   centerOfGravity: {x: 0, y: -0.5, z: 0}
-  maxTorque: 300
+  maxTorque: 500
   maxReverseSpeed: 25
   handBrakeTorque: 750
   maxSteer: 25
@@ -3348,18 +3353,21 @@ MonoBehaviour:
   - 30
   - 40
   - 65
-  - 95
+  - 100
   maxSpeed: 90
   WheelSensitivity: 1
   Acceleration: 0
   Brake: 0
+  Gear: 0
   AccelerationLog: 0
   BrakeLog: 0
   Wheel: 0
   CurrentSpeedLog: 0
-  Arrow: {fileID: 1517703362943404}
+  isControlActive: 0
+  Arrow: {fileID: 1654300400531520, guid: 058cbb86027253742a174a501264a00b, type: 2}
   Destination: {x: 0, y: 0, z: 0}
-  DistanceText: {fileID: 102113152746661304}
+  DistanceText: {fileID: 102995284764230930, guid: 058cbb86027253742a174a501264a00b,
+    type: 2}
   isKeyboard: 0
   isAI: 0
   dataManger: {fileID: 0}
