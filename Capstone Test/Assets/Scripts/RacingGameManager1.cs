@@ -93,6 +93,7 @@ public class RacingGameManager1 : MonoBehaviour
         	AIcontrolScript.isControlActive = false;
         StartState(0);
         ResetUI();
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
