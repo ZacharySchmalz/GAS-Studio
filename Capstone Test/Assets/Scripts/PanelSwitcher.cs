@@ -53,6 +53,11 @@ public class PanelSwitcher : MonoBehaviour {
 		SceneManager.LoadScene ("Racing2");
 	}
 
+    public void LoadTrackThree()
+    {
+        SceneManager.LoadScene("FinalRace");
+    }
+
 	public void ToInstructions () {
 		if (instructionsPanel.activeSelf == false) {
 			instructionsPanel.SetActive (true);
