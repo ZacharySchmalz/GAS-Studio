@@ -24,8 +24,6 @@ public class RacingGameManager1 : MonoBehaviour
     public Text CountInText;
     public GameObject pauseScreen;
     public GameObject inputScreen;
-    public GameObject lobbyScreen;
-    public Text playerList;
     public Text gameStatusText;
     public Text waypointText;
     public GameObject GUICanvas;
@@ -60,9 +58,11 @@ public class RacingGameManager1 : MonoBehaviour
 
     public void UpdatePlayers()
     { 
-        AI = GameObject.FindGameObjectWithTag("AIPlayer");
-        AIdestinationManager = AI.GetComponent<DestinationManager>();
-        AIcontrolScript = AI.GetComponent<CarControlCS>();
+		if (GameObject.FindGameObjectWithTag ("AIPlayer") != null) {
+			AI = GameObject.FindGameObjectWithTag ("AIPlayer");
+			AIdestinationManager = AI.GetComponent<DestinationManager> ();
+			AIcontrolScript = AI.GetComponent<CarControlCS> ();
+		}
     }
 
     public void InitializePlayer()
@@ -74,13 +74,11 @@ public class RacingGameManager1 : MonoBehaviour
             CountInText = playerComponents.CountInText;
             pauseScreen = playerComponents.pauseScreen;
             inputScreen = playerComponents.inputScreen;
-            lobbyScreen = playerComponents.lobbyScreen;
             gameStatusText = playerComponents.gameStatusText;
             waypointText = playerComponents.waypointsText;
             GUICanvas = playerComponents.GUICanvas;
             GUICamera = playerComponents.GUICamera;
             controlScript = playerComponents.carControl;
-            playerList = playerComponents.playerList;
             timer = playerComponents.timer;
     }
 
@@ -91,7 +89,8 @@ public class RacingGameManager1 : MonoBehaviour
         UpdatePlayers();
         timer.isCounting = false;
         controlScript.isControlActive = false;
-        AIcontrolScript.isControlActive = false;
+		if(AIcontrolScript != null) 
+        	AIcontrolScript.isControlActive = false;
         StartState(0);
         ResetUI();
     }
@@ -144,6 +143,7 @@ public class RacingGameManager1 : MonoBehaviour
                     CountInText.transform.localScale = new Vector3(2f, 2f, 1f);
                     CountInText.color = Color.green;
                     controlScript.isControlActive = true;
+				if(AIcontrolScript != null)
                     AIcontrolScript.isControlActive = true;
                     timer.isCounting = true;
                     initializeState = false;
@@ -155,7 +155,7 @@ public class RacingGameManager1 : MonoBehaviour
 
 
                 break;
-            case 4: //Game Over
+            case 3: //Game Over
                 
                 break;
             default:
@@ -201,15 +201,15 @@ public class RacingGameManager1 : MonoBehaviour
                     OnWin();
             }
 
-            if (AIdestinationManager.currentWaypoint >= AIdestinationManager.waypoints.Length)
-            {
-                if (isGameOver == false)
-                {
-                    StartState(3);
-                }
-                gameStatusText.text = "You Lose!";
-                isGameOver = true;
-            }
+			if (AIdestinationManager != null) {
+				if (AIdestinationManager.currentWaypoint >= AIdestinationManager.waypoints.Length) {
+					if (isGameOver == false) {
+						StartState (3);
+					}
+					gameStatusText.text = "You Lose!";
+					isGameOver = true;
+				}
+			}
 
 
         }
@@ -226,7 +226,6 @@ public class RacingGameManager1 : MonoBehaviour
     {
         isPaused = false;
         pauseScreen.SetActive(false);
-        lobbyScreen.SetActive(false);
         inputScreen.SetActive(false);
         GUICanvas.SetActive(true);
         GUICamera.SetActive(true);
@@ -237,7 +236,6 @@ public class RacingGameManager1 : MonoBehaviour
     {
         PauseGame();
         pauseScreen.SetActive(true);
-        lobbyScreen.SetActive(false);
         inputScreen.SetActive(false);
         GUICanvas.SetActive(false);
         GUICamera.SetActive(false);

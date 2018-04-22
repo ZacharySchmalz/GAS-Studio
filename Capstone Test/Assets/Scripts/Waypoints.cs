@@ -18,8 +18,10 @@ public class Waypoints : MonoBehaviour {
         }
         player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<DestinationManager>().SendMessage("UpdateWaypoints");
-        AIPlayer = GameObject.FindGameObjectWithTag("AIPlayer");
-        AIPlayer.GetComponent<DestinationManager>().SendMessage("UpdateWaypoints");
+		if (GameObject.FindGameObjectWithTag ("AIPlayer") != null) {
+			AIPlayer = GameObject.FindGameObjectWithTag ("AIPlayer");
+			AIPlayer.GetComponent<DestinationManager> ().SendMessage ("UpdateWaypoints");
+		}
 
     }
 	
