@@ -69,16 +69,22 @@ public class FileManager : MonoBehaviour
     {
         if (maxFileCount == 0)
             maxFileCount = 500;
-        
-        defaultFilePath = Application.dataPath;
+
+        //defaultFilePath = Application.dataPath;
+        defaultFilePath = "Game_Data/";
+        if (!Application.isEditor)
+            defaultFilePath = Application.dataPath;
+
         topLevelPath = Directory.GetParent(defaultFilePath).FullName;
         Directory.CreateDirectory(topLevelPath + "/Game_Data");
 
         if (destinationType == Destination.Default)
             currentFilePath = defaultFilePath + "/StreamingAssets";
-        else
+        else if (!Application.isEditor)
             currentFilePath = topLevelPath + "/Game_Data/";
-        
+        else
+            currentFilePath = topLevelPath;
+
         Debug.Log("Current File Path: " + currentFilePath);
         streamingAssetsPath = defaultFilePath + "/StreamingAssets";
 

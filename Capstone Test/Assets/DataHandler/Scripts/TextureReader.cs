@@ -62,6 +62,7 @@ public class TextureReader : MonoBehaviour
             if (Directory.Exists(topLevelPath + "Game_Data"))
             {
                 imgFolderPath = topLevelPath + "Game_Data" + "/IMG/";
+                string tempfolder = "Game_Data/IMG/";
                 Directory.CreateDirectory(imgFolderPath);
                 string cameraLoc = "";
                 if (i == 0)
@@ -70,10 +71,10 @@ public class TextureReader : MonoBehaviour
                     cameraLoc = "center";
                 else if (i == 2)
                     cameraLoc = "right";
-                path = string.Format("{0}{1}{2}.png", imgFolderPath, cameraLoc, renderNum);
+                path = string.Format("{0}{1}{2}.png", tempfolder, cameraLoc, renderNum);
+                renderPath = string.Format("{0}{1}{2}.png", "IMG/", cameraLoc, renderNum);
                 File.WriteAllBytes(path, texBytes);
             }
-            renderPath = path;
             LogManager.instance.Log(renderPath + ",");
         }
 

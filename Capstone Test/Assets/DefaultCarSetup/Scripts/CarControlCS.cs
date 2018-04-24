@@ -104,9 +104,9 @@ public class CarControlCS : MonoBehaviour {
 	void Start () {
 
 		//Alter the center of mass for stability on your car
-		GetComponent<Rigidbody>().centerOfMass = centerOfGravity;
-        GameManager = GameObject.FindGameObjectWithTag("GameController");
-        GameManager.SendMessage("UpdatePlayers");
+		//GetComponent<Rigidbody>().centerOfMass = centerOfGravity;
+  //      GameManager = GameObject.FindGameObjectWithTag("GameController");
+  //      GameManager.SendMessage("UpdatePlayers");
         Gear = 1;
 	}
 

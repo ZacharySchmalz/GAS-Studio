@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/FinalRace.unity
+    guid: 1e30539ba431cfc45955848af05eaf42
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: a5dbec7d6a85640389e64b7070203fd4
   - enabled: 0
@@ -38,9 +41,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Network Racing 2 Loop.unity
     guid: d1403724fc2dc294b9dc73b2ff0278f4
-  - enabled: 1
-    path: Assets/Scenes/NetworkTesting/GameManagerTest.unity
-    guid: 861648b5a227fab41bcac2729d46f57a
-  - enabled: 1
-    path: Assets/Scenes/NetworkTesting/MultiplayerTest.unity
-    guid: c989f142878b22440b9ad799d376b86d
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
