@@ -302,7 +302,7 @@ public class TutorialGameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MenuPanels");
     }
 
     public void UpdatePlayers()

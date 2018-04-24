@@ -313,6 +313,6 @@ public class RacingGameManager1 : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MenuPanels");
     }
 }

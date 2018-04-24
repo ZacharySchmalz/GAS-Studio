@@ -46,16 +46,16 @@ public class PanelSwitcher : MonoBehaviour {
 	}
 
 	public void LoadTrackOne () {
-		SceneManager.LoadScene ("RacingLoop");
+		SceneManager.LoadScene ("RacingLoopNew");
 	}
 
 	public void LoadTrackTwo () {
-		SceneManager.LoadScene ("Racing2");
+		SceneManager.LoadScene ("RacingNew");
 	}
 
     public void LoadTrackThree()
     {
-        SceneManager.LoadScene("FinalRace");
+        SceneManager.LoadScene("FinalRaceNew");
     }
 
 	public void ToInstructions () {
