@@ -17,7 +17,7 @@ public class VehicleCameraControl : MonoBehaviour
 	//read only
 		
 	void Start(){
-		
+		playerCar = GameObject.FindGameObjectWithTag ("Player").transform;
 		// Early out if we don't have a target
 		if (!playerCar)
 			return;

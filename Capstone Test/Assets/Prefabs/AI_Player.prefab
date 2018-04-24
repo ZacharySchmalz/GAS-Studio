@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 114583759913024174}
   - component: {fileID: 114056971599901928}
   - component: {fileID: 114232743231217648}
+  - component: {fileID: 114172795018564278}
   m_Layer: 0
   m_Name: AI_Player
   m_TagString: AIPlayer
@@ -654,25 +655,6 @@ GameObject:
   - component: {fileID: 81626126529783032}
   m_Layer: 0
   m_Name: Mini Map Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1687194912501150
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4986741130510806}
-  - component: {fileID: 20282347028355684}
-  - component: {fileID: 124255488997183318}
-  - component: {fileID: 114192465834685382}
-  - component: {fileID: 114422101149691602}
-  m_Layer: 0
-  m_Name: Shader Render Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1227,7 +1209,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1362394806073232}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 139.47, y: -0.20000191, z: 386.22}
+  m_LocalPosition: {x: -0.25, y: -0.20000191, z: 8.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4831467604039852}
@@ -1238,7 +1220,6 @@ Transform:
   - {fileID: 4045040887833740}
   - {fileID: 4532979578187026}
   - {fileID: 4891204825005392}
-  - {fileID: 4986741130510806}
   - {fileID: 4459716197798676}
   - {fileID: 4929429929602060}
   m_Father: {fileID: 0}
@@ -1271,7 +1252,7 @@ Transform:
   m_Children:
   - {fileID: 4801682668038290}
   m_Father: {fileID: 4449984642638218}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4495203185074132
 Transform:
@@ -1713,7 +1694,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4449984642638218}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4958911878493076
 Transform:
@@ -1728,19 +1709,6 @@ Transform:
   m_Father: {fileID: 4781326776059062}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!4 &4986741130510806
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687194912501150}
-  m_LocalRotation: {x: -0, y: -0.000000119209275, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.105, z: 1.212}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4449984642638218}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20237485869907374
 Camera:
   m_ObjectHideFlags: 1
@@ -1768,42 +1736,6 @@ Camera:
     m_Bits: 4294967263
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: bf938372445658e4796f791bd35f68e2, type: 2}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!20 &20282347028355684
-Camera:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687194912501150}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0.3
-    y: 0.02
-    width: 0.45
-    height: 0.25
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -2769,7 +2701,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1680358504267490}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!82 &82763622771712462
 AudioSource:
   m_ObjectHideFlags: 1
@@ -3210,6 +3142,21 @@ MonoBehaviour:
   HeadlightOff: {fileID: 2100000, guid: 4b977b34c1d78f04f8de4635c21c0b4c, type: 2}
   HeadlightIntensity: 5
   HeadlightRange: 100
+--- !u!114 &114172795018564278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362394806073232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fc2344c4fb59841819856abf02fd47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints: []
+  totalLaps: 0
+  currentWaypoint: 0
+  currentLap: 0
 --- !u!114 &114176896386802632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3226,18 +3173,6 @@ MonoBehaviour:
   - {fileID: 20912507648478466}
   - {fileID: 20415046933557250}
   identity: {fileID: 0}
---- !u!114 &114192465834685382
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687194912501150}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2177b027363bb74b9532b8ecc297a3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 1643ea7c9de753b43b02f156c8cf02ff, type: 2}
 --- !u!114 &114232743231217648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3274,37 +3209,6 @@ MonoBehaviour:
   ackExpirationTime: 1800
   pingInterval: 25
   pingTimeout: 60
---- !u!114 &114422101149691602
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687194912501150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdda6077b79cea74ab2b361a75696ab8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  depthDistance: 100
-  segmentList:
-  - tag: Building
-    color: {r: 1, g: 0.6, b: 0, a: 0}
-  - tag: Car
-    color: {r: 0.5294118, g: 0.5294118, b: 0.5294118, a: 0}
-  - tag: Person
-    color: {r: 1, g: 0, b: 0, a: 0}
-  - tag: Road
-    color: {r: 0.72794116, g: 0.3211505, b: 0.6493883, a: 0}
-  - tag: Sign
-    color: {r: 0.11724138, g: 0, b: 1, a: 0}
-  - tag: Terrain
-    color: {r: 0, g: 1, b: 0.13103461, a: 0}
-  - tag: Tree
-    color: {r: 0, g: 0.91724133, b: 1, a: 0}
-  - tag: Props
-    color: {r: 0.11678201, g: 0.39705884, b: 0.15350798, a: 0}
-  - tag: RoadDash
-    color: {r: 1, g: 1, b: 0, a: 0}
 --- !u!114 &114514337319158078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3334,8 +3238,7 @@ MonoBehaviour:
       type: 2}
     wheelRL: {fileID: 146144452200800172, guid: 058cbb86027253742a174a501264a00b,
       type: 2}
-    wheelRR: {fileID: 146393603905370346, guid: 058cbb86027253742a174a501264a00b,
-      type: 2}
+    wheelRR: {fileID: 146216762564524322}
   tires:
     wheelFL: {fileID: 4736857910420856, guid: 058cbb86027253742a174a501264a00b, type: 2}
     wheelFR: {fileID: 4456425513455236, guid: 058cbb86027253742a174a501264a00b, type: 2}
@@ -3369,7 +3272,7 @@ MonoBehaviour:
   DistanceText: {fileID: 102995284764230930, guid: 058cbb86027253742a174a501264a00b,
     type: 2}
   isKeyboard: 0
-  isAI: 0
+  isAI: 1
   dataManger: {fileID: 0}
   isRecording: 0
   recordingText: {fileID: 0}
@@ -3419,13 +3322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09242320e8dcd04481afbe3a40f8db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!124 &124255488997183318
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1687194912501150}
-  m_Enabled: 1
 --- !u!124 &124317188751223692
 Behaviour:
   m_ObjectHideFlags: 1
